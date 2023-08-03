@@ -18,8 +18,24 @@
 //
 //
 // -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
+// Cypress.Commands.add('dismiss', { pre vSubject: 'optional'}, (subject, options) => { ... })
 //
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('switchToNewTab', ()=>{
+    cy.window().then((win)=>{
+        win.open('', '_blank'); //Opens blank tab
+    })
+
+    //wait for new tab to open
+    cy.window().should('have.length', 2); 
+
+    //switch to the new tab
+    cy.window().then((win)=>{
+        win.focus()
+    })
+})
+
+

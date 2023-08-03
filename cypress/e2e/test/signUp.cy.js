@@ -1,4 +1,5 @@
 import { SignUp } from "../PageObject/SignUp";
+import { email } from "../helper"
 
 describe('Sign up page', () => {
     let signUp = new SignUp
@@ -11,9 +12,10 @@ describe('Sign up page', () => {
         signUp.signUpForm(
             'Euphemia',
             'Nnaemeka',
-            'euphemiauc94@gmail.com',
+            email,
             'uche94',
-            ) 
+        )
+        cy.xpath('//*[@id=":rd:"]').should("exist");        
     })
 
     it('sign up with invalid email formart', () => {
@@ -22,21 +24,8 @@ describe('Sign up page', () => {
             'Nnaemeka',
             'euphemiaucgmail.com',
             'uche94',
-            ) 
+        ) 
+        cy.xpath('//*[@id=":ra:-helper-text"]').should('exist')
+        .and("contain.text, 'email address must be a valid email")
     })
-
-    
-    it('verify email', () => {
-            signUp.verifyEmail('4662');
-            should('include', )
-    }) 
-
-    it('verify email', () => {
-        signUp.login
-        should('exist');
-}) 
-    
-    
-
-
 })
