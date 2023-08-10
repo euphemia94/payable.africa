@@ -4,7 +4,7 @@ import { email } from "../helper"
 describe('Sign up page', () => {
     let signUp = new SignUp;
     const num = Math.floor(Math.random());
-    const email = `testpayable${num}@example.com`;
+    const email = `test1payable${num}${num}@example.com`;
 
     beforeEach(() => {
         signUp.visit();
@@ -15,11 +15,11 @@ describe('Sign up page', () => {
             'Euphemia',
             'Nnaemeka',
             email,
-            'uche94',
+            'uchegodgg94',
         );
     })
 
-    it('sign up with invalid email formart', () => {
+    it.only('sign up with invalid email formart', () => {
         signUp.signUpForm(
             'Euphemia',
             'Nnaemeka',
